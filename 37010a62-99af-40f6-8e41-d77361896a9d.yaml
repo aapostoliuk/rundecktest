@@ -1,0 +1,43 @@
+- defaultTab: nodes
+  description: ''
+  executionEnabled: true
+  id: 37010a62-99af-40f6-8e41-d77361896a9d
+  loglevel: INFO
+  name: test job
+  nodeFilterEditable: false
+  options:
+  - name: testkey
+    secure: true
+    storagePath: keys/project/testgit/testkey
+    type: text
+    valueExposed: true
+  plugins:
+    ExecutionLifecycle: {}
+  scheduleEnabled: true
+  sequence:
+    commands:
+    - configuration:
+        command: cd /
+      nodeStep: true
+      type: localexec
+    - configuration:
+        command: ls
+      nodeStep: true
+      type: localexec
+    keepgoing: false
+    pluginConfig:
+      WorkflowStrategy:
+        node-first:
+          info: |-
+            <table>
+                <tr><td>1.</td><td class="text-info">NodeA</td> <td>step 1</td></tr>
+                <tr><td>2.</td><td class="text-info">"</td> <td>step 2</td></tr>
+                <tr><td>3.</td><td class="text-info">"</td> <td>step 3</td></tr>
+                <tr><td>4.</td><td class="text-muted">NodeB</td> <td>step 1</td></tr>
+                <tr><td>5.</td><td class="text-muted">"</td> <td>step 2</td></tr>
+                <tr><td>6.</td><td class="text-muted">"</td> <td>step 3</td></tr>
+            </table>
+    strategy: node-first
+  user: admin
+  uuid: 37010a62-99af-40f6-8e41-d77361896a9d
+
